@@ -1,0 +1,20 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.iml
+*.java-version
+
+# Project and others
+target/
+.classpath
+.project
+.settings/
+.idea/
+*.ipr
+*.iws
+tmp
+.DS_Store
+.env
