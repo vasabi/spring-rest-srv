@@ -5,13 +5,11 @@ import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.vasabijaj.rest.Application;
-import ru.vasabijaj.rest.models.dto.DealRequest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,9 +19,6 @@ import static org.junit.Assert.assertEquals;
 public class DealControllerTest {
     @Autowired
     private TestRestTemplate template;
-
-    @MockBean
-    private DealRequest mockDeal;
 
     @Test
     public void responseOk() {
