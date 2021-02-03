@@ -36,7 +36,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = null;
+        String expectedJson = "{\"status\":\"OK\",\"products\":[\"milk:2364758363546\",\"water:3656352437590\"]}";
         assertEquals(HttpStatus.OK, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -52,7 +52,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = null;
+        String expectedJson = "{\"status\":\"OK\",\"products\":[\"unknown:2364758363546\",\"water:3656352437590\"]}";
         assertEquals(HttpStatus.OK, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -148,8 +148,35 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = null;
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        JSONAssert.assertEquals(null, response.getBody(), false);
+    }
+
+    @Test
+    public void responseOkFirstSeenCodesOfAllRepeatedProducts() {
+
+        String request = "{\"seller\":\"123534251\",\"customer\":\"648563524\",\"products\":[" +
+                "{\"name\":\"milk\",\"code\":\"2364758363546\"}," +
+                "{\"name\":\"water\",\"code\":\"3656352437590\"}," +
+                // Коды продуктов, отличные от первоначальных
+                "{\"name\":\"milk\",\"code\":\"2364758363111\"}," +
+                "{\"name\":\"water\",\"code\":\"3656352437111\"}," +
+                "{\"name\":\"water\",\"code\":\"3656352437222\"}]}";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<>(request, headers);
+
+        ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
+
+        String expectedJson = "{\"status\":\"OK\",\"products\":[" +
+                "\"milk:2364758363546\"," +
+                "\"water:3656352437590\"," +
+                // Коды продуктов изменены на первоначальные
+                "\"milk:2364758363546\"," +
+                "\"water:3656352437590\"," +
+                "\"water:3656352437590\"]}";
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
 }
