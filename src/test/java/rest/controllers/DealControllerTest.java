@@ -1,4 +1,4 @@
-package controllers;
+package rest.controllers;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
