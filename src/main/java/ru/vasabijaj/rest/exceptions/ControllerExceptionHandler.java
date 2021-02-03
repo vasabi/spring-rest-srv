@@ -1,4 +1,4 @@
-package rest.exceptions;
+package ru.vasabijaj.rest.exceptions;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;

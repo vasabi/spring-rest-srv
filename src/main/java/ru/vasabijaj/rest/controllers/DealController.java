@@ -1,6 +1,6 @@
-package rest.controllers;
+package ru.vasabijaj.rest.controllers;
 
-import rest.models.dto.DealRequest;
+import ru.vasabijaj.rest.models.dto.DealRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

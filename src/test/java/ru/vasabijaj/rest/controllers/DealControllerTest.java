@@ -1,4 +1,4 @@
-package rest.controllers;
+package ru.vasabijaj.rest.controllers;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +10,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import rest.Application;
-import rest.models.dto.DealRequest;
+import ru.vasabijaj.rest.Application;
+import ru.vasabijaj.rest.models.dto.DealRequest;
 
 import static org.junit.Assert.assertEquals;
 

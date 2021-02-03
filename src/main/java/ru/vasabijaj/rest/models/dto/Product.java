@@ -1,4 +1,4 @@
-package rest.models.dto;
+package ru.vasabijaj.rest.models.dto;
 
 import lombok.Getter;
 import lombok.Setter;
