@@ -36,7 +36,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"success\",\"errors\":[]}";
+        String expectedJson = null;
         assertEquals(HttpStatus.OK, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -52,7 +52,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"success\",\"errors\":[]}";
+        String expectedJson = null;
         assertEquals(HttpStatus.OK, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -68,7 +68,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"error\",\"errors\":[\"seller required\"]}";
+        String expectedJson = "{\"status\":400,\"errors\":[\"seller required\"]}";
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -84,7 +84,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"error\",\"errors\":[\"customer required\"]}";
+        String expectedJson = "{\"status\":400,\"errors\":[\"customer required\"]}";
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -100,7 +100,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"error\",\"errors\":[\"products required\"]}";
+        String expectedJson = "{\"status\":400,\"errors\":[\"products required\"]}";
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -116,7 +116,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"error\",\"errors\":[\"products required\"]}";
+        String expectedJson = "{\"status\":400,\"errors\":[\"products required\"]}";
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
@@ -132,7 +132,7 @@ public class DealControllerTest {
 
         ResponseEntity<String> response = template.postForEntity("/deal", entity, String.class);
 
-        String expectedJson = "{\"status\":\"error\",\"errors\":[\"customer must contain 9 characters\",\"seller must contain 9 characters\",\"product code must contain 13 characters\"]}";
+        String expectedJson = "{\"status\":400,\"errors\":[\"customer must contain 9 characters\",\"seller must contain 9 characters\",\"product code must contain 13 characters\"]}";
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         JSONAssert.assertEquals(expectedJson, response.getBody(), false);
     }
